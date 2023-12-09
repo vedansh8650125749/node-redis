@@ -20,6 +20,7 @@ async function getRepos(req, res, next) {
         const response = await fetch(`https://api.github.com/users/${username}`)
         const data = await response.json()
         const repos = data.public_repos
+        //ERROR IN LINE 24 setex() IS NOT WORKING...:) FROM VEDANSH
         client.setex(username, 3600, repos)
         res.send(setResponse(username, repos))
     } catch (error) {
